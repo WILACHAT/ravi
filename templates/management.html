@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- documentation at http://getbootstrap.com/docs/4.1/, alternative themes at https://bootswatch.com/ -->
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- https://favicon.io/emoji-favicons/money-mouth-face/ -->
+        <link href="/static/favicon.ico" rel="icon">
+
+
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+        <title class = "waan">Create Rong {% block title %}{% endblock %}</title>
+
+    </head>
+    <style>
+
+        body {
+  background: #3da4ab;
+  font-family: 'Raleway', sans-serif;
+}
+
+    .form-inline {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  color:#79CDCD;
+  margin-top: 20px;
+  margin-left: 640px;
+
+}
+.idk {
+  border-bottom: dashed black  2px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+
+
+
+}
+.ptb {
+    margin-bottom: 50px;
+}
+.itsme{
+    font-family: courier;
+    font-size:20px;
+    text-align: center;
+    color: black;
+    margin-top: 20px;
+}
+.button
+{
+
+    background: #0275d8;
+    color:white;
+    box-shadow: black 0.5px 1px;
+    border:#0275d8;
+    display: flex;
+    margin-top:6px;
+    vertical-align:middle;
+    align-items: center;
+    justify-content: center;
+;
+}
+.yea, .yea:hover
+{
+    text-align:center;
+    margin-left: 693px;
+    background:#5cb85c;
+    border: #5cb85c;
+    font-family:sans-serif;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:90%;
+
+}
+.deletebutton
+{
+    background: #d9534f;
+    border:#d9534f;
+    color: white;
+    margin-left: 5px;
+    height: 30px;
+    margin-top:5px;
+
+}
+.h7
+{
+    margin-left:210px;
+    color:yellow;
+    margin-bottom:-5px;
+}
+.h6
+{
+    margin-left: 5px;
+    display:flex;
+    flex-direction: column;
+
+}
+.forme{
+    margin-left:-99px;
+}
+.wee
+{
+    display: flex;
+    margin-top:6px;
+    vertical-align:middle;
+    align-items: center;
+    justify-content: center;
+    flex-direction:column;
+}
+.weee
+{
+    display: flex;
+    flex-direction:row;
+}
+.h66
+{
+    margin-left:2px;
+}
+.deletebutton66
+{
+    background: #d9534f;
+    color: white;
+    margin-left: 1px;
+    height: 120%;
+}
+.deletebuttons
+{
+    height:25px;
+    color:white;
+    background:#d9534f;
+    border:#d9534f;
+    margin-left:5px;
+}
+.input
+{
+    margin-top:5px;
+}
+.secondheader
+{
+    color:#051e3e;
+}
+.secondheaderr
+{
+    color:#051e3e;
+    margin-left:60px;
+}
+.secondheaderrr
+{
+    color:#051e3e;
+    margin-left:-10px;
+}
+.titlename
+{
+    color:#051e3e;
+    margin-top:20px;
+    margin-bottom:-20px;
+}
+.titlenamee
+{
+   margin-left:10px;
+   color:#051e3e;
+   margin-top:20px;
+   margin-bottom:-20px;
+}
+.titlenameee
+{
+   margin-right:108px;
+   color:#051e3e;
+   margin-top:20px;
+   margin-bottom:-20px;
+}
+.navbar a{
+    font-family: Verdana;
+}
+.todaynav
+{
+    background-color:#ffb347;
+}
+
+    </style>
+      <script>
+        var counter = 1;
+        var limit = 100000;
+        var fordelete = 0;
+        function addInput(divName){
+     if (counter == limit)  {
+          alert("You have reached the limit of adding " + counter + " inputs");
+     }
+     else {
+          var newdiv = document.createElement('div');
+
+          newdiv.id = divName + counter;
+          var str=divName + "waan";
+          str = str.concat(counter);
+          var names = divName;
+          var strr= divName + counter + divName;
+
+
+          console.log("divName", divName)
+          if (divName == "Seed Species Name" || divName == "waan0")
+           {
+
+                newdiv.innerHTML = ""+names+"" + "How Many Days" + "<div class='d-flex justify-content-center'><input type='text' class='h6' id ='seedspeciesseedspecies1' name='seedspeciesname1' >" +  "<input type='number' min ='0'class='h6' id ='seeddaysseeddays' onkeypress='return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57' name='seedspeciesday'>" + "<input type='button'class='deletebuttons' value='x' name='myInputs[]' onClick='deleteInput(event);\'></div>";
+                console.log("newdiv", newdiv)
+                console.log("divName", divName)
+                console.log("str", str)
+                document.getElementById(divName).appendChild(newdiv);
+
+
+           }
+          else if (divName == "Medicine Name")
+            {
+                newdiv.innerHTML = ""+names+"" +  "<br><input type='text'id ='medicinemedicine1' name='medicinename1' >" + "<input type='button'class='deletebutton' value='x' name='myInputs[]' onClick='deleteInput(event);\'>";
+                console.log("newdive", newdiv)
+                console.log("divNamee", divName)
+                console.log("stre", str)
+                document.getElementById(divName).appendChild(newdiv);
+             }
+
+             else if (divName == "ปุ๋ยทางใบ")
+            {
+                newdiv.innerHTML = ""+names+"" +  " <br><input type='text'id ='ptbptb1' name='ptb1' >" + "<input type='button'class='deletebutton' value='x' name='myInputs[]' onClick='deleteInput(event);\'>";
+                console.log("newdive", newdiv)
+                console.log("divNamee", divName)
+                console.log("stre", str)
+                document.getElementById(divName).appendChild(newdiv);
+             }
+
+          counter++;
+     }
+        }
+        function deleteInput(event){
+            var counter = 0
+            id = event.target.parentElement.id;
+            if (id == "")
+            {
+                id = event.target.parentElement.parentElement.id
+            }
+            console.log("id", id)
+            what = document.getElementById(id);
+            console.log("thisisforajax", what)
+            console.log("thisisforajax2", what.getAttribute("id"))
+
+            idk = ""
+
+
+            if (id.charAt(0) == "M" || id.charAt(0) == "E" || id.charAt(0) == "ป")
+            {
+                 yea = document.getElementById(id);
+                 console.log("yea", yea)
+
+                 //ngongtwo = document.getElementById(id).childNodes[2].value;
+                // console.log("ngongofm", ngongtwo)
+                 console.log("yea", yea)
+
+            }
+
+            if (id.charAt(0) != "S" && id.charAt(0) != "w" && id.charAt(0) != "s" && id.charAt(0) != "n"){
+                console.log("idchar", id.charAt(0))
+                ngong = document.getElementById(id).childNodes[1].value;
+                //console.log("parentparent", event.target.parentElement.id)
+              //  console.log("idchildnode",document.getElementById(id).childNodes[6].id)
+                console.log("ngong", ngong)
+                console.log("what", what)
+                console.log("firstif")
+
+            }
+            console.log("id", id)
+            if (id.charAt(0) == "s"){
+                console.log("waan")
+                console.log("idforss",event.target.parentElement.id)
+                console.log(document.getElementById(id))
+                ngong = document.getElementById(id).childNodes[1].value;
+                console.log("ngong", ngong)
+                console.log("idk", idk)
+
+            }
+            if (id.charAt(0) == "S")
+            {
+            //    console.log("wilachat")
+                ngongtwo = "ngong"
+                ngong = document.getElementById(id).childNodes[0].value;
+                waan = document.getElementById(id)
+               // console.log("wilachat")
+               // console.log("idkinif", idk)
+                console.log("waan", waan)
+                console.log("ngongins", ngong)
+
+            }
+
+            if (ngong == '' && idk == '')
+            {
+                 what.remove()
+            }
+
+            else
+            {
+                var check = confirm("ARE YOU OKAY TO DELETE?");
+                if (check == true)
+                {
+
+                    var xhttp = new XMLHttpRequest();
+                    another = what.getAttribute("id")
+                    var waan = encodeURIComponent(another)
+                    console.log("encoded", waan)
+                    xhttp.open("POST", "management", true)
+                    xhttp.setRequestHeader("Content-Type", "application/json");
+                    waanchar = waan.charAt(3)
+                    console.log("waanchar", waanchar)
+                    data = JSON.stringify({"id": waan, "char4": waanchar});
+                    console.log("waan", data)
+                    xhttp.send(data)
+
+
+
+                    what.remove()
+                }
+            }
+        }
+        function saveInformation(event)
+        {
+
+            medicinelength = document.getElementsByName("medicinename1").length
+            if (medicinelength != 0)
+            {
+                for (i = 0, w = medicinelength; i < w; i++)
+                {
+                    medicinenameone = document.getElementsByName("medicinename1")[i].value
+                    if (medicinenameone == "")
+                    {
+                        alert("You forgot to put in medicine name")
+                    }
+                }
+
+            }
+            ptblength = document.getElementsByName("ptb1").length
+            if (ptblength != 0)
+            {
+                for (i = 0, w = ptblength; i < w; i ++)
+                {
+                    ptbnameone = document.getElementsByName("ptb1")[i].value
+                    if (ptbnameone == "")
+                    {
+                        alert("You forgot to put in ptb name")
+                    }
+                }
+            }
+
+            seedspecieslength = document.getElementsByName("seedspeciesname1").length
+            if (seedspecieslength != 0)
+            {
+                for (i = 0, w = seedspecieslength; i < w; i++)
+                {
+                    seedspeciesnameone = document.getElementsByName("seedspeciesname1")[i].value
+                    if (seedspeciesnameone == "")
+                    {
+                        alert("You forgot to put in seed species name")
+                    }
+                }
+
+            }
+
+            seedspeciesdayslength = document.getElementsByName("seedspeciesdays").length
+            if (seedspeciesdayslength != 0)
+            {
+                for (i = 0, w = seedspeciesdayslength; i < w; i++)
+               {
+                   seedspeciesdaysone = document.getElementsByName("seedspeciesdays")[i].value
+                   console.log("blehbleh", seedspeciesdaysone)
+                   if (seedspeciesdaysone == "")
+                   {
+                        alert("You forgot to put in seed species second block days")
+                   }
+               }
+            }
+
+        }
+
+
+
+
+
+
+
+    </script>
+
+    <body>
+
+        <nav class="navbar navbar-expand-md navbar-light bg-warning ">
+            <a class="navbar-brand" href="/"><span class="blue">R</span><span class="red">A</span><span class="yellow">V</span><span class="green">I</span> <span class="red">Melon</span></a>
+            <button aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbar" data-toggle="collapse" type="button">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbar">
+
+                    <ul class="navbar-nav mr-auto mt-2">
+                        <li class="nav-item"><a class="nav-link text-dark" href="/">Today</a></li>
+                        <li class="nav-item"><a class="nav-link text-dark" href="/rong">โรง</a></li>
+                        <li class="nav-item"><a class="nav-link text-dark" href="/management">Management</a></li>
+                        <li class="nav-item"><a class="nav-link text-dark" href="/assumption">Assumption</a></li>
+                    </ul>
+
+            </div>
+        </nav>
+        <div class="todaynav">
+            <nav class="navbar navbar-expand-md navbar-muted">
+
+            <p class="text-black">{{today}}</p>
+
+
+
+            <button aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbar" data-toggle="collapse" type="button">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbar">
+
+
+
+
+            </div>
+        </nav>
+        </div>
+      <form action="/management" method="post">
+
+
+    <div class="wee">
+
+        <h1 class="itsme">INPUT SEED SPECIES HERE</h1>
+
+        <div class = "d-flex justify-content-between">
+        <h6 class="secondheaderrr">SEED SPECIES</h6>
+        <h6 class="secondheaderr">SECOND BLOCK DAYS</h6>
+        </div>
+
+
+
+
+
+            <div class = "whatt">
+                        <div id="Seed Species Name">
+                            <div id= "seedSPECIES">
+
+
+                            <div class="d-flex justify-content-center">
+
+
+                                <div class="d-flex flex-column bd-highlight mb-3">
+                                {% for row in itemsSEEDSPECIES %}
+                                <div id="{{row.divseedd}}">
+                                 <div class="d-flex justify-content-around">
+
+                                <input type="text" class="h6"  id="{{row.nseedspecies}}"  name="seedspeciesname2"  value= "{{row.ssnfromdbb}}">
+
+                                <input type="number" class = "h6"  min ="1"   id="{{row.nseedspecies}}" name="seedspeciesname2" value="{{row.sbndfromdbb}}">
+
+                                <input type="button"class="deletebuttons" id="{{row.button}}" type="submit" value="x" name="seedspeciesdeletebutton" onClick="deleteInput(event);">
+
+                                    </div>
+                                    </div>
+                                 {% endfor %}
+                                 </div>
+                                     </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+            <input type="button" class="button" value="+" onClick="addInput('Seed Species Name');">
+
+            </div>
+
+
+
+    <h1 class="idk"></h1>
+
+    <div class="wee">
+
+<h1 class = "itsme">INPUT MEDICINES NAME HERE</h1>
+<h6 class="secondheader">MEDICINE NAMES</h6>
+
+
+    <div class = "whatt">
+     <div id="Medicine Name">
+         <div id="MN">
+
+              {% for row in itemsMEDICINE %}
+              <div id="{{row.divid}}">
+   <input type="text" class="input"id ="{{row.nmedicinename}}"name="medicinename2" value="{{row.medicinefromdbb}}"><input type="button"class="deletebutton" value="x"name="myInputs[]" onClick="deleteInput(event);">
+      </div>
+      {% endfor %}
+
+
+    </div>
+     </div>
+
+
+    </div>
+         <input type="button" id="medicinenamebutton" class="button"value="+" onClick="addInput('Medicine Name');">
+
+    </div>
+
+
+    <h1 class="idk"></h1>
+    <div class="wee">
+    <h1 class = "itsme">INPUT ปุ๋ยทางใบ AMOUNT HERE</h1>
+ <h6 class="secondheader">PTB</h6>
+
+
+
+
+
+    <div class = "whatt">
+
+
+<div class = "what">
+
+     <div id="ปุ๋ยทางใบ">
+         <div id="ptbb">
+
+             {% for row in itemsPTB %}
+             <div id="{{row.divptb}}">
+      <input type = "text" id="{{row.nratiomed}}" min="0" name="ptb2"value="{{row.ratiomedfromdbb}}"><input type="button"class="deletebutton" value="x"name="myInputs[]" onClick="deleteInput(event);">
+           </div>
+           {% endfor %}
+    </div>
+     </div>
+
+
+    </div>
+
+
+
+    </div>
+        <input type="button" class="button" value="+" onClick="addInput('ปุ๋ยทางใบ');">
+
+
+
+    </div>
+    </div>
+    <h1 class="idk"></h1>
+    <div class="wee">
+        <button class="btn btn-primary" type="submit" onClick="saveInformation(event)">SAVE</button>
+      </div>
+          <h1 class="idk"></h1>
+        </form>
+
+
+
+
+
+
+    </body>
+
+</html>

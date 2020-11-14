@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- documentation at http://getbootstrap.com/docs/4.1/, alternative themes at https://bootswatch.com/ -->
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- https://favicon.io/emoji-favicons/money-mouth-face/ -->
+        <link href="/static/favicon.ico" rel="icon">
+
+        <link href="/static/styles.css" rel="stylesheet">
+
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+        <title class = "waan">RAVI Mellon: {% block title %}{% endblock %}</title>
+
+    </head>
+    <style>
+    body
+    {
+        background: #3da4ab;
+    }
+    .coverall
+    {
+        margin-top:40px;
+
+    }
+    .waan{
+        background:red;
+    }
+    firstrow{
+        background-color:red;
+    }
+.table
+{
+    border-radius:7px;
+    border: none;
+
+}
+.TH{
+    border-collapse:collapse;
+}
+.firstfirst
+{
+    background-color:#F4AE72;
+    color:black;
+}
+.secondsecond
+{
+    background-color: #FABF2F;
+}
+.letstry{
+    text-align:center;
+    color: black;
+    font-family:monospace;
+    font-size:21px;
+}
+.another
+{
+    background-color:#FF5864;
+}
+.anotherr
+{
+    background-color:#e9e9e9;
+}
+.navbar a{
+    font-family: Verdana;
+}
+.lays
+{
+    background-color:black;
+
+}
+.todaynav
+{
+    background-color:#ffb347;
+    color:black;
+}
+    </style>
+
+    <body>
+    <div class="lays">
+        <nav class="navbar navbar-expand-md navbar-light bg-warning">
+            <a class="navbar-brand" href="/"><span class="blue">R</span><span class="red">A</span><span class="yellow">V</span><span class="green">I</span> <span class="red">Melon</span></a>
+            <button aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbar" data-toggle="collapse" type="button">
+            </button>
+            <div class="collapse navbar-collapse" id="navbar">
+
+                    <ul class="navbar-nav mr-auto mt-2">
+                         <li class="nav-item"><a class="nav-link text-dark" href="/">Today</a></li>
+                        <li class="nav-item"><a class="nav-link text-dark" href="/rong">โรง</a></li>
+                        <li class="nav-item"><a class="nav-link text-dark" href="/management">Management</a></li>
+                        <li class="nav-item"><a class="nav-link text-dark" href="/assumption">Assumption</a></li>
+
+                    </ul>
+
+            </div>
+        </nav>
+    </div>
+
+
+
+        {% if get_flashed_messages() %}
+            <header>
+                <div class="alert alert-primary border text-center" role="alert">
+                    {{ get_flashed_messages() | join(" ") }}
+                </div>
+            </header>
+        {% endif %}
+        <div class="todaynav">
+        <nav class="navbar navbar-expand-md navbar-muted ">
+
+            <p class="text-black">{{today}}</p>
+
+
+
+            <button aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbar" data-toggle="collapse" type="button">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+        </nav>
+        </div>
+
+        {% for row in itemsrowtoday %}
+
+        <div class ="coverall">
+         <h4 class="letstry">What you need to do today for rong: {{row.todayrong}}</h4>
+        <table class ="nt">
+         <table class = "table table-borderless">
+            <TR = class="waan">
+
+            <TR class = "firstfirst">
+                <TH>Session name: {{row.todaysn}}</TH>
+                <TH>Seedspecies being used this session : {{row.seedspeciesnamee}}</TH>
+                <TH>Today's note: {{row.daynote}}</TH>
+                 <TH></TH>
+                <TH></TH>
+                <TH></TH>
+                <TH></TH>
+                <TH></TH>
+                {% for rows in row.itemsselectmed %}<TH></TH>{% endfor %}
+
+
+
+
+
+            </TR>
+            <TR class = "secondsecond">
+                 <TH>CAPACITY</TH>
+                <TH class="another">RATIO</TH>
+                <TH>RATIO ONES</TH>
+                <TH class="another">RATIO HUNDRETH</TH>
+                <TH>EC</TH>
+                <TH class="another">LITERPERDAY</TH>
+                <TH>LITTERMELLON</TH>
+                <TH class="another">PTB</TH>
+                {% for rows in row.itemsselectmed %}<TH> {{rows.med}} </TH>{% endfor %}
+
+
+            </TR>
+
+            <TR class ="bg-light">
+            <TD class = one>{% if row.capacity != "" %} {{row.capacity}} {% else %} {{row.rongcapacity}} {% endif %}</TD>
+   <TD class="anotherr">{{row.todayro}}</TD>
+      <TD>{{row.todayrh}}</TD>
+   <TD class="anotherr"><SPAN>{{row.todayr}}</SPAN></TD>
+   <TD><SPAN>{{row.todaylpd}}</SPAN></TD>
+   <TD class="anotherr"><SPAN>{{row.eccalendar}}</SPAN></TD>
+            <TD  class="one"><SPAN>{% if row.capacity != "" %} {{row.todaylpd|float * row.capacity|float}} {% else %} {{row.todaylpd|float * rongcapacity|float}} {% endif %}</SPAN></TD>
+            <TD class="anotherr"><SPAN>{{row.selectptb}}</SPAN></TD>
+        {% for rows in row.itemsselectmed %}   <TH> {% for i in row.medicinecalcal.keys() %}{% if i == rows.med %}{{row.medicinecalcal[i]}} {% else %} {{""}}{% endif %} {% endfor %}</TH> {% endfor %}
+
+
+
+
+
+      <!-- <TD>{% for roww in itemsselectptb %} {% if roww.firstday == row.c_dayfhfb|int %} {{roww.ptbselectname}} {% endif %} {% endfor %}</TD>--->
+
+            </TR>
+            </TR>
+</table>
+</table>
+</div>
+
+        {% endfor %}
+
+
+
+    </body>
+
+</html>

@@ -1,0 +1,1353 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- documentation at http://getbootstrap.com/docs/4.1/, alternative themes at https://bootswatch.com/ -->
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- https://favicon.io/emoji-favicons/money-mouth-face/ -->
+        <link href="/static/favicon.ico" rel="icon">
+
+        <link href="/static/styles.css" rel="stylesheet">
+
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+        <title class = "waan">Create Rong {% block title %}{% endblock %}</title>
+
+    </head>
+    <style>
+
+
+body {
+  background: #3da4ab;
+  font-family: 'Raleway', sans-serif;
+}
+table.center
+{
+    margin-left:auto;
+    margin-right:auto;
+    background-color: #92A8D1;
+    margin-top: 75px;
+    border-collapse:separate;
+    border-spacing: 0 10px;
+
+
+}
+TH
+{
+
+    padding : 100px;
+}
+
+
+.seedspeciesname
+{
+    color:white;
+}
+
+
+
+TD:hover
+{
+    position:relative;
+    background-color: #004159;
+    color: white
+}
+.five
+{
+    font-family:sans-serif;
+    font-size:16px;
+}
+.section
+{
+    text-align:center;
+}
+.rongname
+{
+text-align:center;
+flex-direction: column;
+padding-top:20px;
+padding-bottom:10px;
+font-size:20px;
+}
+.he
+{
+
+   flex-direction: column;
+   position: relative;
+   padding-top:20px;
+   padding-bottom:10px;
+
+}
+.change
+{
+    background: black
+}
+.btn{
+    color:black;
+    display:flex;
+    justify-content: center;
+    vertical-align: middle;
+    margin-left:65px;
+}
+
+
+
+    .swatch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.swatch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .1s;
+  transition: .1s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .1s;
+  transition: .1s;
+}
+
+input:checked + .slider {
+  background-color: #15DB95;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #15DB95;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+.on{
+display: inline-block;
+margin-top:8px;
+font-size:12px;
+margin-left:6px;
+
+
+}
+.off
+{
+
+display: inline-block;
+margin-top:8px;
+font-size:12px;
+margin-left:7px;
+
+
+
+}
+
+.color{
+
+background-color:#AC3B61;
+}
+.firstcolumn
+{
+    background: #f6cd61
+}
+.secondcolumn
+{
+    background: #eaa652
+}
+.thirdcolumn
+{
+    background: #90C978;
+}
+.fourthcolumn
+{
+    background:#fe8a71;
+}
+.todaynav
+{
+    background-color:#ffb347;
+
+}
+@keyframes blink {
+    /**
+     * At the start of the animation the dot
+     * has an opacity of .2
+     */
+    0% {
+      opacity: .2;
+    }
+    /**
+     * At 20% the dot is fully visible and
+     * then fades out slowly
+     */
+    20% {
+      opacity: 1;
+    }
+    /**
+     * Until it reaches an opacity of .2 and
+     * the animation can start again
+     */
+    100% {
+      opacity: .2;
+    }
+}
+
+.saving span {
+    color:black;
+    font-size:25px;
+    /**
+     * Use the blink animation, which is defined above
+     */
+    animation-name: blink;
+    /**
+     * The animation should take 1.4 seconds
+     */
+    animation-duration: 1.4s;
+    /**
+     * It will repeat itself forever
+     */
+    animation-iteration-count: infinite;
+
+    animation-fill-mode: both;
+}
+
+.saving span:nth-child(2) {
+
+    animation-delay: .2s;
+}
+
+.saving span:nth-child(3) {
+
+    animation-delay: .4s;
+}
+
+
+    </style>
+    <script>
+        function saveInformation(event)
+        {
+           //
+           // event.target.form.innerHtml
+
+            var table_c = document.getElementById("table1")
+
+
+
+
+            itemsallnotes0 = []
+            itemsallnotes1 = []
+            itemsallnotes2 = []
+            itemsallnotes3 = []
+            itemsallnotes4 = []
+            itemsallnotes5 = []
+            itemscapacity = []
+
+            document.getElementsByName("capacity1").length
+            for (i = 0, w = document.getElementsByName("capacity1").length; i < w; i++)
+            {
+                capacity = document.getElementsByName("capacity1")[i].innerHTML
+                capacity = capacity.trim()
+                itemscapacity.push(capacity)
+            }
+            document.getElementsByName("capacity1")[i]
+            for (var i = 0, w = event.target.form.length; i < w; i ++)
+            {
+
+                    if (event.target.form[i].id == "hex2")
+                    {
+
+                        allnotes = event.target.form[i].value
+                        itemsallnotes0.push(allnotes)
+                    }
+
+                    if (event.target.form[i].id == "hex3")
+                    {
+
+                        allnotes = event.target.form[i].value
+                        itemsallnotes1.push(allnotes)
+                    }
+
+
+                    if (event.target.form[i].id == "hex4")
+                    {
+
+                        allnotes = event.target.form[i].value
+                        itemsallnotes2.push(allnotes)
+                    }
+
+                    if (event.target.form[i].id == "hex5")
+                    {
+
+                        allnotes = event.target.form[i].value
+                        itemsallnotes3.push(allnotes)
+                    }
+
+                    if (event.target.form[i].id == "hex6")
+                    {
+
+                        allnotes = event.target.form[i].value
+                        itemsallnotes4.push(allnotes)
+                    }
+                    if (event.target.form[i].id == "hex7")
+                    {
+
+                        allnotes = event.target.form[i].value
+                        itemsallnotes5.push(allnotes)
+                    }
+
+            }
+
+
+
+            itemsptb1 = []
+            itemsptb2 = []
+            itemsptb3 = []
+            itemsptb4 = []
+            itemsptb5 = []
+            clickptb1 = document.getElementsByName("clickptbb").length;
+            for (i = 0, w = clickptb1; i < w; i++)
+            {
+                itb = document.getElementsByName("clickptbb")[i].innerHTML;
+                itemsptb1.push(itb)
+
+            }
+
+            clickptb2 = document.getElementsByName("clickptbb2").length;
+            for (i = 0, w = clickptb2; i < w; i++)
+            {
+                itb = document.getElementsByName("clickptbb2")[i].innerHTML;
+                itemsptb2.push(itb)
+
+            }
+            clickptb3 = document.getElementsByName("clickptbb3").length;
+            for (i = 0, w = clickptb3; i < w; i++)
+            {
+                itb = document.getElementsByName("clickptbb3")[i].innerHTML;
+                itemsptb3.push(itb)
+
+            }
+            clickptb4 = document.getElementsByName("clickptbb4").length;
+            for (i = 0, w = clickptb4; i < w; i++)
+            {
+                itb = document.getElementsByName("clickptbb4")[i].innerHTML;
+                itemsptb4.push(itb)
+
+            }
+            clickptb5 = document.getElementsByName("clickptbb5").length;
+            for (i = 0, w = clickptb5; i < w; i++)
+            {
+                itb = document.getElementsByName("clickptbb5")[i].innerHTML;
+                itemsptb5.push(itb)
+
+            }
+
+
+            clickmed1 = document.getElementsByName("clickmed1");
+            clickmed11 = document.getElementsByName("waanmed").length;
+
+
+            itemsmedicinenew = []
+            clickmedluck = 0
+            itemsmedicine = []
+            itemsmedicine2 = []
+            itemsmedicine3 = []
+            itemsmedicine4 = []
+            itemsmedicine5 = []
+            itemsmedicinenew2 = []
+            itemsmedicinenew3 = []
+            itemsmedicinenew4 = []
+            itemsmedicinenew5 = []
+            var string = "I dont know what this is  but ok"
+
+
+
+            for (i = 0, w = document.getElementsByName("clickmed1").length; i < w; i++)
+            {
+                yer = document.getElementsByName("clickmed1")[i].innerHTML
+                yer = yer.trim()
+                itemsmedicine.push(yer)
+                yer2 = document.getElementsByName("clickmed1")[i]
+
+
+
+                if (i == (clickmed11 - 1) + clickmedluck)
+                {
+
+                    clickmedluck = clickmedluck + clickmed11
+                    itemsmedicinenew.push(itemsmedicine)
+                    itemsmedicine = []
+                }
+            }
+
+            clickmedluck = 0
+            clickmed11 = document.getElementsByName("waanmed").length;
+            for (i = 0, w = document.getElementsByName("clickmed2").length; i < w; i++)
+            {
+                yer = document.getElementsByName("clickmed2")[i].innerHTML
+                yer = yer.trim()
+                itemsmedicine2.push(yer)
+                yer2 = document.getElementsByName("clickmed2")[i]
+
+
+
+                if (i == (clickmed11 - 1) + clickmedluck)
+                {
+
+                    clickmedluck = clickmedluck + clickmed11
+                    itemsmedicinenew2.push(itemsmedicine2)
+                    itemsmedicine2 = []
+                }
+            }
+
+            clickmedluck = 0
+            clickmed11 = document.getElementsByName("waanmed").length;
+            for (i = 0, w = document.getElementsByName("clickmed3").length; i < w; i++)
+            {
+                yer = document.getElementsByName("clickmed3")[i].innerHTML
+                yer = yer.trim()
+                itemsmedicine3.push(yer)
+
+
+                if (i == (clickmed11 - 1) + clickmedluck)
+                {
+
+                    clickmedluck = clickmedluck + clickmed11
+                    itemsmedicinenew3.push(itemsmedicine3)
+                    itemsmedicine3 = []
+                }
+            }
+
+            clickmedluck = 0
+            clickmed11 = document.getElementsByName("waanmed").length;
+            for (i = 0, w = document.getElementsByName("clickmed4").length; i < w; i++)
+            {
+                yer = document.getElementsByName("clickmed4")[i].innerHTML
+                yer = yer.trim()
+                itemsmedicine4.push(yer)
+
+
+                if (i == (clickmed11 - 1) + clickmedluck)
+                {
+
+                    clickmedluck = clickmedluck + clickmed11
+                    itemsmedicinenew4.push(itemsmedicine4)
+                    itemsmedicine4 = []
+                }
+            }
+
+
+            clickmedluck = 0
+            clickmed11 = document.getElementsByName("waanmed").length;
+            for (i = 0, w = document.getElementsByName("clickmed5").length; i < w; i++)
+            {
+                yer = document.getElementsByName("clickmed5")[i].innerHTML
+                yer = yer.trim()
+                itemsmedicine5.push(yer)
+
+
+                if (i == (clickmed11 - 1) + clickmedluck)
+                {
+
+                    clickmedluck = clickmedluck + clickmed11
+                    itemsmedicinenew5.push(itemsmedicine5)
+                    itemsmedicine5 = []
+                }
+            }
+
+
+            var xhttpp = new XMLHttpRequest();
+            xhttpp.onreadystatechange = function()
+            {
+            if (this.readyState == 4 && this.status == 200)
+            {
+                console.log("comeon letsgo!")
+                console.log("letsgo?",this.responseText)
+
+                alert("Everything is saved!")
+                document.getElementById("useless").remove()
+                document.getElementById("save1").disabled = false;
+
+            }
+            };
+            document.getElementById("save1").disabled = true;
+            var newdiv = document.createElement('div');
+            newdiv.innerHTML = "<div id='useless'class='alert alert-primary' role='alert'><p class='saving'>Saving  This will take a fill moment<span>.</span><span>.</span><span>.</span></p></div>"
+            document.getElementById("justadiv").appendChild(newdiv)
+            checkforsave = "true"
+            xhttpp.open("POST", "currenttable", true)
+            xhttpp.setRequestHeader("Content-Type", "application/json");
+            data = JSON.stringify({"itemsallnotes1": itemsallnotes1, "itemsallnotes2": itemsallnotes2, "itemsallnotes3": itemsallnotes3,"itemsallnotes4": itemsallnotes4,"itemsallnotes5": itemsallnotes5
+            ,"itemsptb1": itemsptb1, "itemsptb2": itemsptb2, "itemsptb3": itemsptb3, "itemsptb4": itemsptb4, "itemsptb5": itemsptb5, "itemsmedicinenew": itemsmedicinenew,
+             "itemsmedicinenew2": itemsmedicinenew2,"itemsmedicinenew3": itemsmedicinenew3,"itemsmedicinenew4": itemsmedicinenew4,"itemsmedicinenew5": itemsmedicinenew5, "itemsallnotes0":itemsallnotes0, "itemscapacity":itemscapacity, "checkforsave":checkforsave});
+
+            xhttpp.send(data)
+
+        }
+        function tickFunction(event){
+
+            if (event.target.id == "tick1")
+            {
+                if (event.target.checked == false)
+                {
+                    inptb1 = document.getElementById("inptb1")
+                    inptb1.remove()
+                    document.getElementById("tick1").value = "n"
+                    for (i = 0, w = document.getElementsByName("capacity1").length;i < w; i++)
+                    {
+                        capacity = document.getElementsByName("capacity1")[i]
+                        capacityy = document.getElementsByName("capacity1")[i].innerHTML
+
+                        capacity.contentEditable = "false"
+                        capacityy = parseInt(capacityy)
+                        checkcapac = parseInt(checkcapac)
+                        if (checkcapac > capacityy)
+                        {
+                            heh = document.getElementsByName("capacity1")[i].innerHTML
+                            checkcapac = heh
+
+                        }
+                        if (capacityy > checkcapac)
+                        {
+
+                        }
+                        if (heh == "")
+                        {
+                            document.getElementsByName("capacity1")[i].innerHTML = checkcapac
+
+
+                        }
+                        else
+                        {
+                            document.getElementsByName("capacity1")[i].innerHTML = heh
+
+                        }
+
+
+
+                    }
+
+
+                }
+                else
+                {
+                    heh = ""
+                    checkcapac = document.getElementsByName("capacity1")[0].innerHTML
+
+                    you = document.getElementById("ptb1");
+                    document.getElementById("tick1").value = "y"
+                    you.innerHTML = you.innerHTML + "<select id = 'inptb1'class='weknow'> {% for row in itemsselectallptb %} <option name = 'optionseedspecies' value='{{row.ptball}}'>{{row.ptball}}</option> {% endfor %} </select>" ;
+
+                    for (i = 0, w = document.getElementsByName("capacity1").length;i < w; i++)
+                    {
+                        capacity = document.getElementsByName("capacity1")[i]
+                        capacityy = document.getElementsByName("capacity1")[i].innerHTML
+
+                        capacity.contentEditable = "true"
+                        capacityy = parseInt(capacityy)
+                        checkcapac = parseInt(checkcapac)
+
+                    }
+
+                }
+
+            }
+
+            if (document.getElementById("tick1").value == "y")
+            {
+
+                if (event.target.id == "clickmedid1")
+                {
+                    if (event.target.innerHTML == "")
+                    {
+                        event.target.innerHTML = "✔"
+
+
+                    }
+                    else
+                    {
+                        event.target.innerHTML = ""
+                    }
+                }
+            }
+
+
+            if (event.target.id == "clickptb1")
+            {
+
+                waan = document.getElementById("inptb1");
+                options = waan.options[waan.selectedIndex].value;
+
+                //event.target.innerHTML = options
+                console.log("inside this fak if clicked", event.target.innerHTML)
+                if (event.target.innerHTML == "")
+                    {
+                        event.target.innerHTML = options
+
+
+                    }
+                    else
+                    {
+                        event.target.innerHTML = ""
+                    }
+            }
+
+
+
+            if (event.target.id == "tick2")
+            {
+
+                if (event.target.checked == false)
+                {
+                    inptb2 = document.getElementById("inptb2")
+                    inptb2.remove()
+                    document.getElementById("tick2").value = "n"
+                    for (i = 0, w = document.getElementsByName("capacity2").length;i < w; i++)
+                    {
+                        capacity = document.getElementsByName("capacity2")[i]
+
+                        capacity.contentEditable = "false"
+
+
+                    }
+
+
+                }
+                else
+                {
+                    you = document.getElementById("ptb2");
+                    you.innerHTML = you.innerHTML + "<select id = 'inptb2'class='weknow'> {% for row in itemsselectallptb %} <option name = 'optionseedspecies' value='{{row.ptball}}'>{{row.ptball}}</option> {% endfor %} </select>" ;
+                    document.getElementById("tick2").value = "y"
+                    for (i = 0, w = document.getElementsByName("capacity2").length;i < w; i++)
+                    {
+                        capacity = document.getElementsByName("capacity2")[i]
+
+                        capacity.contentEditable = "true"
+
+
+                    }
+                }
+
+            }
+            if (document.getElementById("tick2").value == "y")
+            {
+
+                if (event.target.id == "clickmedid2")
+                {
+                    if (event.target.innerHTML == "")
+                    {
+                        event.target.innerHTML = "✔"
+
+
+                    }
+                    else
+                    {
+                        event.target.innerHTML = ""
+                    }
+                }
+            }
+
+
+            if (event.target.id == "clickptb2")
+                {
+
+                    waan = document.getElementById("inptb2");
+                    options = waan.options[waan.selectedIndex].value;
+                    if (event.target.innerHTML == "")
+                    {
+                        event.target.innerHTML = options
+
+
+                    }
+                    else
+                    {
+                        event.target.innerHTML = ""
+                    }
+
+                }
+            if (event.target.id == "tick3")
+            {
+
+
+                if (event.target.checked == false)
+                {
+                    inptb3 = document.getElementById("inptb3")
+                    inptb3.remove()
+                    document.getElementById("tick3").value = "n"
+                    for (i = 0, w = document.getElementsByName("capacity3").length;i < w; i++)
+                    {
+                        capacity = document.getElementsByName("capacity3")[i]
+
+                        capacity.contentEditable = "false"
+
+
+                    }
+
+                }
+                else
+                {
+                    you = document.getElementById("ptb3");
+                    you.innerHTML = you.innerHTML + "<select id = 'inptb3'class='weknow'> {% for row in itemsselectallptb %} <option name = 'optionseedspecies' value='{{row.ptball}}'>{{row.ptball}}</option> {% endfor %} </select>" ;
+                    document.getElementById("tick3").value = "y"
+                    for (i = 0, w = document.getElementsByName("capacity3").length;i < w; i++)
+                    {
+                        capacity = document.getElementsByName("capacity3")[i]
+
+                        capacity.contentEditable = "true"
+
+
+                    }
+
+
+                }
+
+            }
+            if (document.getElementById("tick3").value == "y")
+            {
+
+                if (event.target.id == "clickmedid3")
+                {
+                    if (event.target.innerHTML == "")
+                    {
+                        event.target.innerHTML = "✔"
+
+
+                    }
+                    else
+                    {
+                        event.target.innerHTML = ""
+                    }
+                }
+            }
+            if (event.target.id == "clickptb3")
+                {
+
+                    waan = document.getElementById("inptb3");
+                    options = waan.options[waan.selectedIndex].value;
+                    if (event.target.innerHTML == "")
+                    {
+                        event.target.innerHTML = options
+
+
+                    }
+                    else
+                    {
+                        event.target.innerHTML = ""
+                    }
+
+                }
+
+            if (event.target.id == "tick4")
+            {
+
+
+                if (event.target.checked == false)
+                {
+                    inptb4 = document.getElementById("inptb4")
+                    inptb4.remove()
+                    document.getElementById("tick4").value = "n"
+                    for (i = 0, w = document.getElementsByName("capacity4").length;i < w; i++)
+                    {
+                        capacity = document.getElementsByName("capacity4")[i]
+
+                        capacity.contentEditable = "false"
+
+
+                    }
+
+                }
+                else
+                {
+                    you = document.getElementById("ptb4");
+                    you.innerHTML = you.innerHTML + "<select id = 'inptb4'class='weknow'> {% for row in itemsselectallptb %} <option name = 'optionseedspecies' value='{{row.ptball}}'>{{row.ptball}}</option> {% endfor %} </select>" ;
+                    document.getElementById("tick4").value = "y"
+                    for (i = 0, w = document.getElementsByName("capacity4").length;i < w; i++)
+                    {
+                        capacity = document.getElementsByName("capacity4")[i]
+
+                        capacity.contentEditable = "true"
+
+
+                    }
+
+
+                }
+
+            }
+            if (document.getElementById("tick4").value == "y")
+            {
+
+                if (event.target.id == "clickmedid4")
+                {
+                    if (event.target.innerHTML == "")
+                    {
+                        event.target.innerHTML = "✔"
+
+
+                    }
+                    else
+                    {
+                        event.target.innerHTML = ""
+                    }
+                }
+            }
+            if (event.target.id == "clickptb4")
+                {
+
+                    waan = document.getElementById("inptb4");
+                    options = waan.options[waan.selectedIndex].value;
+                    if (event.target.innerHTML == "")
+                    {
+                        event.target.innerHTML = options
+
+
+                    }
+                    else
+                    {
+                        event.target.innerHTML = ""
+                    }
+                }
+
+            if (event.target.id == "tick5")
+            {
+
+
+                if (event.target.checked == false)
+                {
+                    inptb5 = document.getElementById("inptb5")
+                    inptb5.remove()
+                    document.getElementById("tick5").value = "n"
+                    for (i = 0, w = document.getElementsByName("capacity5").length;i < w; i++)
+                    {
+                        capacity = document.getElementsByName("capacity5")[i]
+
+                        capacity.contentEditable = "false"
+
+
+                    }
+
+                }
+                else
+                {
+                    you = document.getElementById("ptb5");
+                    you.innerHTML = you.innerHTML + "<select id = 'inptb5'class='weknow'> {% for row in itemsselectallptb %} <option name = 'optionseedspecies' value='{{row.ptball}}'>{{row.ptball}}</option> {% endfor %} </select>" ;
+                    document.getElementById("tick5").value = "y"
+                    for (i = 0, w = document.getElementsByName("capacity5").length;i < w; i++)
+                    {
+                        capacity = document.getElementsByName("capacity5")[i]
+
+                        capacity.contentEditable = "true"
+
+
+                    }
+
+                }
+
+
+            }
+            if (document.getElementById("tick5").value == "y")
+            {
+
+                if (event.target.id == "clickmedid5")
+                {
+                    if (event.target.innerHTML == "")
+                    {
+                        event.target.innerHTML = "✔"
+                    }
+                    else
+                    {
+                        event.target.innerHTML = ""
+                    }
+                }
+            }
+            if (event.target.id == "clickptb5")
+                {
+
+                    waan = document.getElementById("inptb5");
+                    options = waan.options[waan.selectedIndex].value;
+                    if (event.target.innerHTML == "")
+                    {
+                        event.target.innerHTML = options
+
+
+                    }
+                    else
+                    {
+                        event.target.innerHTML = ""
+                    }
+                }
+        }
+
+    </script>
+
+    <body>
+
+        <nav class="navbar navbar-expand-md navbar-light bg-warning ">
+            <a class="navbar-brand" href="/"><span class="blue">R</span><span class="red">A</span><span class="yellow">V</span><span class="green">I</span> <span class="red">Melon</span></a>
+            <button aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbar" data-toggle="collapse" type="button">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbar">
+
+                    <ul class="navbar-nav mr-auto mt-2">
+                         <li class="nav-item"><a class="nav-link text-dark" href="/">Today</a></li>
+                        <li class="nav-item"><a class="nav-link text-dark" href="/rong">โรง</a></li>
+                        <li class="nav-item"><a class="nav-link text-dark" href="/management">Management</a></li>
+                        <li class="nav-item"><a class="nav-link text-dark" href="/assumption">Assumption</a></li>
+
+                    </ul>
+
+            </div>
+        </nav>
+        <div class="todaynav">
+        <nav class="navbar-waan">
+     <div class="d-flex justify-content-between">
+
+           <a class = "he"href="/rong"><svg width="24" height="24"  xmlns="http://www.w3.org/2000/svg"><path d="M20 .755l-14.374 11.245 14.374 11.219-.619.781-15.381-12 15.391-12 .609.755z"/></svg>
+            </a>
+            <small class="rongname"> โรง: {{rongname}} </small>
+            <small></small>
+        </div>
+        </nav>
+        </div>
+
+
+
+  <form action="/currenttable" method="post">
+      <div id="justadiv"></div>
+
+<table class = "table table-info table-striped" id="table0">
+
+
+
+            <TR>
+                <TH class = "firstcolumn">{{seedspeciesname}}</TH>
+                <TH class = "firstcolumn">Before Long Toong</TH>
+                <TH class = "firstcolumn"></TH>
+                <TH class = "firstcolumn"></TH>
+                <TH class = "firstcolumn"></TH>
+                <TH class = "firstcolumn"></TH>
+                <TH class = "firstcolumn"></TH>
+                <TH class = "firstcolumn"></TH>
+                {% for row in itemsselectmed %} <TH class = "firstcolumn"></TH>{% endfor %}
+                <TH class = "firstcolumn"></TH>
+                <TH class = "firstcolumn"></TH>
+
+
+
+
+                <TH class = "firstcolumn"></TH>
+                <TH class = "firstcolumn"></TH>
+
+            </TR>
+            <TR class = "color">
+                <TH class="secondcolumn">DAYS</TH>
+                <TH class="secondcolumn">DATE</TH>
+                <TH class="secondcolumn">WEEKDAY</TH>
+                 <TH class="secondcolumn">CAPACITY</TH>
+                <TH class="secondcolumn">RATIO</TH>
+                <TH class="secondcolumn">RATIO ONES</TH>
+                <TH class="secondcolumn">RATIO HUNDRETH</TH>
+                <TH class="secondcolumn">EC</TH>
+                <TH class="secondcolumn">LITERPERDAY</TH>
+                <TH class="secondcolumn">LITTERMELLON</TH>
+            {% for row in itemsselectmed %}<TH class="secondcolumn">{{row.med}}</TH> {% endfor %}
+               <TH class="secondcolumn">PTB</TH>
+                <TH class="secondcolumn">NOTE</TH>
+
+            </TR>
+
+
+            {% for row in itemscalendarbeforelongtoong %}
+            <TR name = "idkkk">
+             <TD class="thirdcolumn">{{row.c_day}}</TD>
+   <TD class="fourthcolumn">{{row.c_date}}</TD>
+      <TD class="thirdcolumn">{{row.weekday}}</TD>
+  <TD name = "capacity1" class="fourthcolumn">{{capacityrong}}</TD>
+   <TD class="thirdcolumn"><SPAN>{{row.c_r}}</SPAN></TD>
+   <TD class="fourthcolumn"><SPAN>{{row.c_rones}}</SPAN></TD>
+   <TD class="thirdcolumn"><SPAN>{{row.c_rhun}}</SPAN></TD>
+    <TD class="fourthcolumn"><SPAN>{{row.eccalendar}}</SPAN></TD>
+        <TD class="thirdcolumn"><SPAN>{{row.c_lpd}}</SPAN></TD>
+        <TD  class="fourthcolumn"><SPAN>{{row.c_lmf}}</SPAN></TD>
+     <!--  <TD>{% for roww in ptbshitemsselectptb %} {% if roww.firstday == row.c_dayfhfb|int %} {{roww.ptbselectname}} {% endif %} {% endfor %}</TD>--->
+   {% for rows in itemsselectmed %}<TD class="thirdcolumn"></TD> {% endfor %}
+
+      <!-- {% for row in itemsselectmed %}<TD id ="clickmedid0" name="clickmed0" onclick="tickFunction(event)">{% for row in itemsdynamics %} {{row.z}} {% endfor %}</TD> {% endfor %}--->
+
+   <!--{% for roww in itemsdynamic %} {% for row in roww %} <TD id ="clickmedid0" name="clickmed0" onclick="tickFunction(event)">  {{row.medicinetick}} </TD>{% endfor %} {% endfor %}--->
+     <TD class="fourthcolumn"></TD>
+        <TD  class="thirdcolumn"><textarea id="hex2" value="note" placeholder="NOTE" class="textarea">{{row.daynote}}</textarea></TD>
+
+            </TR>
+
+            {% endfor %}
+</table>
+
+
+
+
+
+
+
+       <table class = "table table-info table-striped" id="table1">
+
+
+
+            <TR class = "bg-info">
+                <TH class = "firstcolumn">{{seedspeciesname}}</TH>
+                <TH class = "firstcolumn">{{section_notefhfb}}</TH>
+                <TH class = "firstcolumn">SECTION 1</TH>
+                <TH class = "firstcolumn"></TH>
+                <TH class = "firstcolumn"></TH>
+                <TH class = "firstcolumn"></TH>
+                <TH class = "firstcolumn"></TH>
+                <TH class = "firstcolumn"></TH>
+                {% for row in itemsselectmed %} <TH class = "firstcolumn"></TH>{% endfor %}
+                <TH class = "firstcolumn"></TH>
+                <TH class = "firstcolumn"></TH>
+
+
+
+
+                <TH class = "firstcolumn"><label class="swatch" id ="swatch1">
+  <input type="checkbox" value="ok" id="tick1"onclick="tickFunction(event)">
+  <span class="slider round"> <p class="on">ON</p><p class="off">OFF</p></span>
+</label></TH>
+                <TH class = "firstcolumn"><input type="button" id = "save1" class="btn btn-warning" value="save" onClick="saveInformation(event)"></TH>
+
+            </TR>
+            <TR class = "color">
+                <TH class="secondcolumn">DAYS</TH>
+                <TH class="secondcolumn">DATE</TH>
+                <TH class="secondcolumn">WEEKDAY</TH>
+                 <TH class="secondcolumn">CAPACITY</TH>
+                <TH class="secondcolumn">RATIO</TH>
+                <TH class="secondcolumn">RATIO ONES</TH>
+                <TH class="secondcolumn">RATIO HUNDRETH</TH>
+                <TH class="secondcolumn">EC</TH>
+                <TH class="secondcolumn">LITERPERDAY</TH>
+                <TH class="secondcolumn">LITTERMELLON</TH>
+            {% for row in itemsselectmed %}<TH class="secondcolumn" name = "waanmed">{{row.med}}</TH> {% endfor %}
+               <TH class="secondcolumn" id ="ptb1">PTB</TH>
+                <TH class="secondcolumn">NOTE</TH>
+
+            </TR>
+
+
+            {% for row in itemscalendarfhfb %}
+            <TR name = "idkkk">
+             <TD class="thirdcolumn">{{row.c_dayfhfb}}</TD>
+   <TD class="fourthcolumn">{{row.c_datefhfb}}</TD>
+      <TD class="thirdcolumn">{{row.weekdayfhfb}}</TD>
+  <!--<TD name = "capacity1" class="fourthcolumn"><div name="capacity"contenteditable="true">{{capacityrong}}</div></TD>--->
+  <TD name = "capacity1"  class="fourthcolumn" contenteditable = "false">{% if row.capacityfhfb != "" %} {{row.capacityfhfb}} {% else %} {{capacityrong}} {% endif %}</TD>
+   <TD class="thirdcolumn"><SPAN>{{row.c_rfhfb}}</SPAN></TD>
+   <TD class="fourthcolumn"><SPAN>{{row.c_ronesfhfb}}</SPAN></TD>
+   <TD class="thirdcolumn"><SPAN>{{row.c_rhunfhfb}}</SPAN></TD>
+    <TD class="fourthcolumn"><SPAN>{{row.eccalendarfhfb}}</SPAN></TD>
+        <TD class="thirdcolumn"><SPAN>{{row.c_lpdfhfb}}</SPAN></TD>
+        <TD class="fourthcolumn"><SPAN> {% if row.capacityfhfb != "" %} {{row.c_lpdfhfb|float * row.capacityfhfb|float}} {% else %} {{row.c_lpdfhfb|float * capacityrong|float}} {% endif %}</SPAN></TD>
+     <!--  <TD>{% for roww in ptbshitemsselectptb %} {% if roww.firstday == row.c_dayfhfb|int %} {{roww.ptbselectname}} {% endif %} {% endfor %}</TD>--->
+    {% for rows in itemsselectmed %}<TD class="thirdcolumn"id ="clickmedid1" name="clickmed1" onclick="tickFunction(event)">{% for i in row.medicinecalcal.keys() %}{% if i == rows.med %}{{row.medicinecalcal[i]}} {% else %} {{""}}{% endif %} {% endfor %}</TD> {% endfor %}
+
+      <!-- {% for row in itemsselectmed %}<TD id ="clickmedid1" name="clickmed1" onclick="tickFunction(event)">{% for row in itemsdynamics %} {{row.z}} {% endfor %}</TD> {% endfor %}--->
+
+   <!--{% for roww in itemsdynamic %} {% for row in roww %} <TD id ="clickmedid1" name="clickmed1" onclick="tickFunction(event)">  {{row.medicinetick}} </TD>{% endfor %} {% endfor %}--->
+      <TD class="fourthcolumn" id ="clickptb1" name="clickptbb"onclick="tickFunction(event)">{{row.ptbfhfb}}</TD>
+        <TD class="thirdcolumn"><textarea id="hex3" value="note" placeholder="NOTE" class="textarea">{{row.daynotefhfb}}</textarea></TD>
+
+            </TR>
+
+            {% endfor %}
+</table>
+
+  <table class = "table table-info table-striped">
+            <TR class = "bg-info">
+                <TH class = "firstcolumn">{{seedspeciesname}}</TH>
+                <TH class = "firstcolumn">{{section_noteshfb}}</TH>
+                <TH class = "firstcolumn">SECTION 2</TH>
+                 <TH class = "firstcolumn"></TH>
+                <TH class = "firstcolumn"></TH>
+                <TH class = "firstcolumn"></TH>
+                 <TH class = "firstcolumn"></TH>
+                <TH class = "firstcolumn"></TH>
+                  <TH class = "firstcolumn"></TH>
+                <TH class = "firstcolumn"></TH>
+
+  {% for row in itemsselectmed %} <TH class = "firstcolumn"></TH>{% endfor %}
+               <TH class = "firstcolumn"><label class="swatch" id ="swatch2">
+  <input type="checkbox" id="tick2" onclick="tickFunction(event)">
+  <span class="slider round"> <p class="on">ON</p><p class="off">OFF</p></span>
+</label></TH>
+                <TH class = "firstcolumn"></TH>
+
+            </TR>
+
+            </TR>
+
+            <TR class = "color">
+                <TH class="secondcolumn">DAYS</TH>
+                <TH class="secondcolumn">DATE</TH>
+                 <TH class="secondcolumn">WEEKDAY</TH>
+                <TH class="secondcolumn">CAPACITY</TH>
+                <TH class="secondcolumn">RATIO</TH>
+                <TH class="secondcolumn">RATIO ONES</TH>
+                <TH class="secondcolumn">RATIO HUNDRETH</TH>
+                <TH class="secondcolumn">EC</TH>
+                <TH class="secondcolumn">LITERPERDAY</TH>
+                <TH class="secondcolumn">LITTERMELLON</TH>
+                  {% for row in itemsselectmed %}<TH class="secondcolumn"name = "waanmed2">{{row.med}}</TH> {% endfor %}
+                 <TH class="secondcolumn"id="ptb2">PTB</TH>
+                 <TH class="secondcolumn">NOTE</TH>
+            </TR>
+
+            {% for row in itemscalendarshfb %}
+
+            <TR>
+            <TD class="thirdcolumn">{{row.c_dayshfb}}</TD>
+   <TD  class="fourthcolumn">{{row.c_dateshfb}}</TD>
+    <TD class="thirdcolumn">{{row.weekdayshfb}}</TD>
+   <TD name = "capacity1" class="fourthcolumn" contenteditable = "false">{% if row.capacityshfb != "" %} {{row.capacityshfb}} {% else %} {{capacityrong}} {% endif %}</TD>
+   <TD class="thirdcolumn"><SPAN>{{row.c_rshfb}}</SPAN></TD>
+   <TD  class="fourthcolumn"><SPAN>{{row.c_ronesshfb}}</SPAN></TD>
+   <TD class="thirdcolumn"><SPAN>{{row.c_rhunshfb}}</SPAN></TD>
+    <TD  class="fourthcolumn"><SPAN>{{row.eccalendarshfb}}</SPAN></TD>
+        <TD class="thirdcolumn"><SPAN>{{row.c_lpdshfb}}</SPAN></TD>
+        <TD  class="fourthcolumn"><SPAN>{% if row.capacityshfb != "" %} {{row.c_lpdshfb|float * row.capacityshfb|float}} {% else %} {{row.c_lpdshfb|float * capacityrong|float}} {% endif %}</SPAN></TD>
+    <!-- <TD>{% for roww in itemsselectptbshfb %} {% if roww.firstday == row.c_dayshfb|int %} {{roww.ptbselectname}} {% endif %} {% endfor %}</TD>--->
+    {% for rows in itemsselectmed %}<TD  class="thirdcolumn"id ="clickmedid2" name="clickmed2" onclick="tickFunction(event)">{% for i in row.medicinecalcalshfb.keys() %}{% if i == rows.med %}{{row.medicinecalcalshfb[i]}} {% else %} {{""}}{% endif %} {% endfor %}</TD> {% endfor %}
+        <TD  class="fourthcolumn" id ="clickptb2" name = "clickptbb2" onclick="tickFunction(event)">{{row.ptbshfb}}</TD>
+           {% if row.c_dayshfb == row.pasom %} <TD class="thirdcolumn"><textarea id="hex5" value = "note"  placeholder="NOTE" class="textarea">ผสม</textarea></TD>{% else %} <TD class="thirdcolumn"><textarea id="hex5"   value = "note"  placeholder="NOTE" class="textarea">{{row.daynoteshfb}}</textarea></TD> {% endif %}
+
+            </TR>
+            {% endfor %}
+</table>
+
+  <table class = "table table-info table-striped">
+            <TR class = "bg-info">
+                 <TH class = "firstcolumn">{{seedspeciesname}}</TH>
+                <TH class = "firstcolumn">{{section_notefhsb}}</TH>
+                <TH class = "firstcolumn">SECTION 3</TH>
+                <TH class = "firstcolumn"></TH>
+                <TH class = "firstcolumn"></TH>
+                <TH class = "firstcolumn"></TH>
+                 <TH class = "firstcolumn"></TH>
+                <TH class = "firstcolumn"></TH>
+                <TH class = "firstcolumn"> </TH>
+                <TH class = "firstcolumn"></TH>
+                  {% for row in itemsselectmed %} <TH class = "firstcolumn"></TH>{% endfor %}
+                <TH class = "firstcolumn"><label class="swatch" id ="swatch3">
+  <input type="checkbox" id="tick3" onclick="tickFunction(event)">
+  <span class="slider round"> <p class="on">ON</p><p class="off">OFF</p></span>
+</label></TH>
+                <TH class = "firstcolumn"></TH>
+
+            </TR>
+            <TR class = "color">
+                <TH class="secondcolumn">DAYS</TH>
+                <TH class="secondcolumn">DATE</TH>
+                 <TH class="secondcolumn">WEEKDAY</TH>
+                <TH class="secondcolumn">CAPACITY</TH>
+                <TH class="secondcolumn">RATIO</TH>
+                <TH class="secondcolumn">RATIO_ONES</TH>
+                <TH class="secondcolumn">RATIO_HUNDRETH</TH>
+                <TH class="secondcolumn">EC</TH>
+                <TH class="secondcolumn">LITERPERDAY</TH>
+                <TH class="secondcolumn">LITTERMELLON</TH>
+                  {% for row in itemsselectmed %}<TH class="secondcolumn"name = "waanmed3">{{row.med}}</TH> {% endfor %}
+                 <TH class="secondcolumn"id ="ptb3">PTB</TH>
+                 <TH class="secondcolumn">NOTE</TH>
+            </TR>
+
+            {% for row in itemscalendarfhsb %}
+            <TR>
+             <TD class="thirdcolumn">{{row.c_dayfhsb}}</TD>
+   <TD  class="fourthcolumn">{{row.c_datefhsb}}</TD>
+ <TD class="thirdcolumn">{{row.weekdayfhsb}}</TD>
+   <TD name = "capacity1" class="fourthcolumn" contenteditable = "false">{% if row.capacityfhsb != "" %} {{row.capacityfhsb}} {% else %} {{capacityrong}} {% endif %}</TD>
+   <TD class="thirdcolumn"><SPAN>{{row.c_rfhsb}}</SPAN></TD>
+   <TD  class="fourthcolumn"><SPAN>{{row.c_ronesfhsb}}</SPAN></TD>
+   <TD class="thirdcolumn"><SPAN>{{row.c_rhunfhsb}}</SPAN></TD>
+    <TD  class="fourthcolumn"><SPAN>{{row.eccalendarfhsb}}</SPAN></TD>
+        <TD class="thirdcolumn"><SPAN>{{row.c_lpdfhsb}}</SPAN></TD>
+        <TD class="fourthcolumn"><SPAN>{% if row.capacityfhsb != "" %} {{row.c_lpdfhsb|float * row.capacityfhsb|float}} {% else %} {{row.c_lpdfhsb|float * capacityrong|float}} {% endif %}</SPAN></TD>
+       <!-- <TD>{% for roww in itemsselectptbfhsb %} {% if roww.firstday == row.c_dayfhsb|int %} {{roww.ptbselectname}} {% endif %} {% endfor %}</TD>--->
+    {% for rows in itemsselectmed %}<TD class="thirdcolumn"id ="clickmedid3" name="clickmed3" onclick="tickFunction(event)">{% for i in row.medicinecalcalfhsb.keys() %}{% if i == rows.med %}{{row.medicinecalcalfhsb[i]}} {% else %} {{""}}{% endif %} {% endfor %}</TD> {% endfor %}
+           <TD  class="fourthcolumn"id ="clickptb3"name = "clickptbb3" onclick="tickFunction(event)">{{row.ptbfhsb}}</TD>
+           {% if row.c_dayfhsb == row.pasom %} <TD class="thirdcolumn"><textarea id="hex5"   value = "note"  placeholder="NOTE" class="textarea">ผสม</textarea></TD>{% else %} <TD class="thirdcolumn"><textarea id="hex5"   value = "note"  placeholder="NOTE" class="textarea">{{row.daynotefhsb}}</textarea></TD> {% endif %}
+
+
+
+            </TR>
+            {% endfor %}
+</table>
+
+  <table class = "table table-info table-striped">
+            <TR class = "bg-info">
+                 <TH class = "firstcolumn">{{seedspeciesname}}</TH>
+                <TH class = "firstcolumn"> {{section_noteshsb}}</TH>
+                <TH class = "firstcolumn">SECTION 4</TH>
+                <TH class = "firstcolumn"></TH>
+                <TH class = "firstcolumn"></TH>
+                <TH class = "firstcolumn"></TH>
+                 <TH class = "firstcolumn"></TH>
+                <TH class = "firstcolumn"></TH>
+                <TH class = "firstcolumn"></TH>
+                <TH class = "firstcolumn"></TH>
+                  {% for row in itemsselectmed %} <TH class = "firstcolumn"></TH>{% endfor %}
+               <TH class = "firstcolumn">  <label class="swatch" id ="swatch4">
+  <input type="checkbox" id="tick4" onclick="tickFunction(event)">
+  <span class="slider round"> <p class="on">ON</p><p class="off">OFF</p></span>
+</label></TH>
+                <TH class = "firstcolumn"></TH>
+
+            </TR>
+
+
+            </TR>
+            <TR class = "color">
+                <TH class="secondcolumn">DAYS</TH>
+                <TH class="secondcolumn">DATE</TH>
+                <TH class="secondcolumn">WEEKDAY</TH>
+                <TH class="secondcolumn" >CAPACITY</TH>
+                <TH class="secondcolumn" >RATIO</TH>
+                <TH class="secondcolumn">RATIO_ONES</TH>
+                <TH class="secondcolumn">RATIO_HUNDRETH</TH>
+                <TH class="secondcolumn">EC</TH>
+                <TH class="secondcolumn">LITERPERDAY</TH>
+                <TH class="secondcolumn">LITTERMELLON</TH>
+                  {% for row in itemsselectmed %}<TH class="secondcolumn" name = "waanmed4">{{row.med}}</TH> {% endfor %}
+                <TH class="secondcolumn" id ="ptb4">PTB</TH>
+                 <TH class="secondcolumn">NOTE</TH>
+            </TR>
+
+            {% for row in itemscalendarshsb %}
+            <TR>
+             <TD class="thirdcolumn">{{row.c_dayshsb}}</TD>
+   <TD  class="fourthcolumn">{{row.c_dateshsb}}</TD>
+   <TD class="thirdcolumn">{{row.weekdayshsb}}</TD>
+   <TD name = "capacity1" class="fourthcolumn" contenteditable = "false">{% if row.capacityshsb != "" %} {{row.capacityshsb}} {% else %} {{capacityrong}} {% endif %}</TD>
+   <TD class="thirdcolumn"><SPAN>{{row.c_rshsb}}</SPAN></TD>
+   <TD  class="fourthcolumn"><SPAN>{{row.c_ronesshsb}}</SPAN></TD>
+   <TD class="thirdcolumn"><SPAN>{{row.c_rhunshsb}}</SPAN></TD>
+    <TD class="fourthcolumn"><SPAN>{{row.eccalendarshsb}}</SPAN></TD>
+        <TD class="thirdcolumn"><SPAN>{{row.c_lpdshsb}}</SPAN></TD>
+        <TD  class="fourthcolumn"><SPAN>{% if row.capacityshsb != "" %} {{row.c_lpdshsb|float * row.capacityshsb|float}} {% else %} {{row.c_lpdshsb|float * capacityrong|float}} {% endif %}</SPAN></TD>
+       <!-- <TD>{% for roww in itemsselectptbshsb %} {% if roww.firstday == row.c_dayshsb|int %} {{roww.ptbselectname}} {% endif %} {% endfor %}</TD>--->
+    {% for rows in itemsselectmed %}<TD class="thirdcolumn"id ="clickmedid4" name="clickmed4" onclick="tickFunction(event)">{% for i in row.medicinecalcalshsb.keys() %}{% if i == rows.med %}{{row.medicinecalcalshsb[i]}} {% else %} {{""}}{% endif %} {% endfor %}</TD> {% endfor %}
+        <TD  class="fourthcolumn"id ="clickptb4" name = "clickptbb4" onclick="tickFunction(event)">{{row.ptbshsb}}</TD>
+        <TD class="thirdcolumn"><textarea id="hex6" value = "note" placeholder="NOTE" class="textarea">{{row.daynoteshsb}}</textarea></TD>
+
+
+
+            </TR>
+            {% endfor %}
+</table>
+
+  <table class = "table table-info table-striped">
+            <TR class = "bg-info">
+                 <TH class = "firstcolumn">{{seedspeciesname}}</TH>
+                <TH class = "firstcolumn">{{section_notethsb}}</TH>
+                <TH class = "firstcolumn">SECTION 5</TH>
+                 <TH class = "firstcolumn"></TH>
+                <TH class = "firstcolumn"></TH>
+                <TH class = "firstcolumn"></TH>
+                 <TH class = "firstcolumn"></TH>
+                <TH class = "firstcolumn"></TH>
+                <TH class = "firstcolumn"></TH>
+                <TH class = "firstcolumn"></TH>
+                  {% for row in itemsselectmed %} <TH class = "firstcolumn"></TH>{% endfor %}
+ <TH class = "firstcolumn">  <label class="swatch" id ="swatch5">
+  <input type="checkbox" id="tick5" onclick="tickFunction(event)" >
+  <span class="slider round"> <p class="on">ON</p><p class="off">OFF</p></span>
+</label></TH>
+                <TH class = "firstcolumn"></TH>
+
+            </TR>
+
+            </TR>
+            <TR class = "color">
+                <TH class="secondcolumn">DAYS</TH>
+                <TH class="secondcolumn">DATE</TH>
+                 <TH class="secondcolumn">WEEKDAY</TH>
+                 <TH class="secondcolumn">CAPACITY</TH>
+                <TH class="secondcolumn">RATIO</TH>
+                <TH class="secondcolumn">RATIO_ONES</TH>
+                <TH class="secondcolumn">RATIO_HUNDRETH</TH>
+                <TH class="secondcolumn">EC</TH>
+                <TH class="secondcolumn">LITERPERDAY</TH>
+                <TH class="secondcolumn">LITTERMELLON</TH>
+                  {% for row in itemsselectmed %}<TH class="secondcolumn" name = "waanmed5">{{row.med}}</TH> {% endfor %}
+                <TH class="secondcolumn"id ="ptb5">PTB</TH>
+                <TH class="secondcolumn">NOTE</TH>
+
+            </TR>
+
+            {% for row in itemscalendarthsb %}
+            <TR>
+             <TD class="thirdcolumn">{{row.c_daythsb}}</TD>
+   <TD  class="fourthcolumn">{{row.c_datethsb}}</TD>
+      <TD class="thirdcolumn">{{row.weekdaythsb}}</TD>
+   <TD name = "capacity1" class="fourthcolumn" contenteditable = "false">{% if row.capacitythsb != "" %} {{row.capacitythsb}} {% else %} {{capacityrong}} {% endif %}</TD>
+   <TD class="thirdcolumn"><SPAN>{{row.c_rthsb}}</SPAN></TD>
+   <TD  class="fourthcolumn"><SPAN>{{row.c_ronesthsb}}</SPAN></TD>
+   <TD class="thirdcolumn"><SPAN>{{row.c_rhunthsb}}</SPAN></TD>
+    <TD  class="fourthcolumn"><SPAN>{{row.eccalendarthsb}}</SPAN></TD>
+        <TD class="thirdcolumn"><SPAN>{{row.c_lpdthsb}}</SPAN></TD>
+        <TD  class="fourthcolumn"><SPAN>{% if row.capacitythsb != "" %} {{row.c_lpdthsb|float * row.capacitythsb|float}} {% else %} {{row.c_lpdthsb|float * capacityrong|float}} {% endif %}</SPAN></TD>
+            <!--<TD>{% for roww in itemsselectptbthsb %} {% if roww.firstday == row.c_daythsb|int %} {{roww.ptbselectname}} {% endif %} {% endfor %}</TD>--->
+    {% for rows in itemsselectmed %}<TD class="thirdcolumn" id ="clickmedid5" name="clickmed5" onclick="tickFunction(event)">{% for i in row.medicinecalcalthsb.keys() %}{% if i == rows.med %}{{row.medicinecalcalthsb[i]}} {% else %} {{""}}{% endif %} {% endfor %}</TD> {% endfor %}
+            <TD  class="fourthcolumn"id ="clickptb5" name = "clickptbb5" onclick="tickFunction(event)">{{row.ptbthsb}}</TD>
+            <TD class="thirdcolumn"><textarea id="hex7" value = "note"  placeholder="NOTE" class="textarea">{{row.daynotethsb}}</textarea></TD>
+
+
+
+            </TR>
+            {% endfor %}
+</table>
+
+
+
+
+
+</form>
+    </body>
+
+</html>
